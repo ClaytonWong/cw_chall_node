@@ -1,2 +1,5 @@
 ./api/subdomain.js
 ./api/authStuff.js
+
+# Dependency directories
+node_modules/
