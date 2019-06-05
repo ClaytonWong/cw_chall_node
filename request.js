@@ -11,7 +11,7 @@ function getFromZendeskAPI(restOfURL) {
   return promise
 }
 
-getFromZendeskAPI('tickets.json?per_page=25&?page=1')
+getFromZendeskAPI('tickets.json?page=2&per_page=25')
   .then(res => {
     var page1 = res.data
     console.log(page1)
