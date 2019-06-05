@@ -11,7 +11,7 @@ Node.js ver 10.16.0 can be downloaded from it's official site:
 
 ## Requirements
 
-### Downloading the project
+### Installing the project
 1) In github, click on the green "clone or download" button
 2) Choose "download zip" in the dropdown menu under the button
 3) Choose destination for download
