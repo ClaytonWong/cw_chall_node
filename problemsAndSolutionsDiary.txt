@@ -1,11 +1,41 @@
-This is a record of problems I encounted with rough solutions
+-----------------------------------------------------------------
+| This is a record of problems I encounted with rough solutions |
+-----------------------------------------------------------------
+
 
 Mon 2019 Jun 3
-cannot authenticate you when using curl to load tickets: enable api in zendesk account settings
+--------------
+Problem:
+Cannot authenticate you when using curl to POST tickets into zendesk account.
+
+Rough solution:
+Activate the API at account settings in agent portal (web interface)
+
 
 Tue 2019 Jun 4
-trouble using Axios HTTP client and Node.js to access api:
-use material from the following sites to get the correct syntax
+--------------
+Problem:
+Trouble using Axios HTTP client and Node.js to access api.
 
-trouble importing credentials stored in separate files to access api.
-use material from following sites to fix syntax errors
+Rough solution:
+Use material from the following sites to get the correct syntax.
+Axios repo: https://github.com/axios/axios
+Axios cheetsheet: https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index
+
+What I learnt was to use syntax like the following:
+
+var instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  auth: {
+    username: 'janedoe',
+    password: 's00pers3cret'
+  }
+});
+
+
+Problem:
+Trouble importing credentials stored in separate files to access api.
+
+Rough solution:
+Use material from following Stackoverflow page to fix syntax errors:
+https://stackoverflow.com/questions/8595509/how-do-you-share-constants-in-nodejs-modules
