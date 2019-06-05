@@ -11,7 +11,17 @@ Node.js ver 10.16.0 can be downloaded from it's official site:
 
 ## Requirements
 
+### Downloading the project
+1) In github, click on the green "clone or download" button
+2) Choose "download zip" in the dropdown menu under the button
+3) Choose destination for download
+4) Extract the zip file in the directory of your choice
+5) Open up a command line or terminal window
+6) In command line or terminal window, go to directory where you extracted the zip file
+
 ### Node packages
+The project requires the following Node packages:
+
 #### Axios
 To get Axios type in the following at the command line:
 
