@@ -18,8 +18,8 @@ const zendesk = axios.create({
   }
 })
 
-function getReq(restOfURL) {
+function getFromAPI(restOfURL) {
   return zendesk.get(restOfURL)
 }
 
-module.exports = { getReq }
+module.exports = { getFromAPI }
