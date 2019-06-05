@@ -37,3 +37,8 @@ If you use yarn, type:
 If you use npm, type:
 
   npm install base-64
+
+## Problems encounted and rough solutions
+A list of problems I encounted with rough solutions in diary format are contained in the file:
+
+problemsAndSolutionsDiary.txt
