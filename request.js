@@ -31,7 +31,23 @@ function pageThroughTickets(pageNum, ticketsPerPage) {
     console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error)
   })
 }
-
+// Test function for paging through tickets, starting from page 1, with 25 tickets per page
+/*
 let pageNum = 1
 let ticketsPerPage = 25
 pageThroughTickets(pageNum, ticketsPerPage)
+*/
+
+
+function x(id) {
+  getFromZendeskAPI(`tickets/${id}.json`)
+  .then(res => {
+    var ticket = res.data
+    console.log(ticket) // Show json for ticket
+  })
+  .catch((error) => {
+    console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error)
+  })
+}
+
+x(1)
