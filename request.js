@@ -39,15 +39,24 @@ pageThroughTickets(pageNum, ticketsPerPage)
 */
 
 
-function x(id) {
-  getFromZendeskAPI(`tickets/${id}.json`)
+function showDetailsForOneTicket(id) {
+  getFromZendeskAPI(`tickets/${id}.json`) // Request json for ticket that matches id given
   .then(res => {
-    var ticket = res.data
-    console.log(ticket) // Show json for ticket
+    var ticket = res.data.ticket
+
+    console.log('Details for ticket:')
+    console.log('-------------------')
+    console.log(`ID: ${ticket.id}`)
+    console.log(`Created at: ${ticket.created_at}`)
+    console.log(`Updated at: ${ticket.updated_at}`)
+    console.log(`Subject: ${ticket.subject}`)
+    console.log('Description:')
+    console.log(ticket.description)
   })
   .catch((error) => {
     console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error)
   })
 }
 
-x(1)
+// Test function showDetailsForOneTicket to print details for ticket with id of 1
+showDetailsForOneTicket(1)
