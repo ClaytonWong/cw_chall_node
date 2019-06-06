@@ -11,11 +11,19 @@ function getFromZendeskAPI(restOfURL) {
   return promise
 }
 
-getFromZendeskAPI('tickets.json?page=2&per_page=25')
+let page1_25ticketsPerPageUrl = 'tickets.json?page=1&per_page=25'
+getFromZendeskAPI(page1_25ticketsPerPageUrl)
   .then(res => {
-    var page1 = res.data
-    console.log(page1)
+    var page = res.data
+    console.log(page)
+
+    if(page["next_page"] === null) {
+      console.log('next page is null')
+    }
+    else {
+      console.log('there is a next page')
+    }
   })
   .catch((error) => {
-    console.log('error from .catch in getFromZendeskAPI for page1: ', error)
+    console.log('error from .catch in getFromZendeskAPI for page: ', error)
   })
