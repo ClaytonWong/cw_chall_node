@@ -31,13 +31,26 @@ function pageThroughTickets(pageNum, ticketsPerPage) {
     console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error)
   })
 }
-// Test function for paging through tickets, starting from page 1, with 25 tickets per page
-/*
-let pageNum = 1
-let ticketsPerPage = 25
-pageThroughTickets(pageNum, ticketsPerPage)
-*/
 
+function listTickets(pageNum, ticketsPerPage) {
+  
+  // Make request for tickets on pageNum
+  getFromZendeskAPI(`tickets.json?page=${pageNum}&per_page=${ticketsPerPage}`)
+  .then(res => {
+    var tickets = res.data.tickets
+    
+    console.log(`Tickets on page ${pageNum}`) 
+    console.log('-----------------')
+
+    // Show ID and subject for tickets on current page
+    tickets.forEach(ticket => {
+      console.log(`ID: ${ticket.id}, Subject: ${ticket.subject}`)
+    })
+  })
+  .catch((error) => {
+    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error)
+  })
+}
 
 function showDetailsForOneTicket(id) {
   getFromZendeskAPI(`tickets/${id}.json`) // Request json for ticket that matches id given
@@ -58,5 +71,17 @@ function showDetailsForOneTicket(id) {
   })
 }
 
+// Test values
+let pageNum = 1
+let ticketsPerPage = 25
+
 // Test function showDetailsForOneTicket to print details for ticket with id of 1
-showDetailsForOneTicket(1)
+//showDetailsForOneTicket(1)
+
+// Test function for paging through tickets, starting from page 1, with 25 tickets per page
+/*
+pageThroughTickets(pageNum, ticketsPerPage)
+*/
+
+// list some info on tickets on page 1
+listTickets(pageNum, ticketsPerPage)
