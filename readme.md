@@ -70,7 +70,9 @@ In the .env file, type in the following:
 SUBDOMAIN, USERNAME and PASSWORD should be replaced with the subdomain, username and password that you want to use.
 
 ## Design and implementation decisions, including changes
-
+### Storing of credentials
+Originally, the subdomain was stored in a separate file called subdomain.js, and the username and password were stored in the file authStuff.js. Both of those files were in the .gitignore file so that they will not
+be put into Github
 
 ## Problems encounted and rough solutions
 A list of problems I encounted with rough solutions in diary format are contained in the file:

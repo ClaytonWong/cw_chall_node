@@ -1,6 +1,10 @@
 # Use .env file to store subdomain and authorisation info instead
 .env
 
+# 
+./api/authStuff.js
+./api/subdomain.js
+
 # Dependency directories
 node_modules/
 
