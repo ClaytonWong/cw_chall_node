@@ -48,6 +48,17 @@ If you use npm, type:
 
   npm install base-64
 
+#### dotenv
+To get dotenv type in the following at the command line:
+
+If you use yarn, type:
+
+  yarn add dotenv
+
+If you use npm, type:
+
+  npm install dotenv
+  
 ## Problems encounted and rough solutions
 A list of problems I encounted with rough solutions in diary format are contained in the file:
 
