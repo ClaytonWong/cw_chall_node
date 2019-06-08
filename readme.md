@@ -58,7 +58,20 @@ If you use yarn, type:
 If you use npm, type:
 
   npm install dotenv
-  
+
+### Creating a .env file
+You need to create a .env file in the root directory of the project for it to run.
+In the .env file, type in the following:
+
+  subdomain = SUBDOMAIN
+  username = USERNAME
+  password = PASSWORD
+
+SUBDOMAIN, USERNAME and PASSWORD should be replaced with the subdomain, username and password that you want to use.
+
+## Design and implementation decisions, including changes
+
+
 ## Problems encounted and rough solutions
 A list of problems I encounted with rough solutions in diary format are contained in the file:
 
