@@ -1,18 +1,22 @@
-// Get environment variables from separate files
-const authstuff = require('./authStuff.js');
-const subdomain = require('./subdomain.js');
-
 // Use Axios HTTP client to work with apis and base-64 to get base64 numbers
 const axios = require('axios')
 const Base64 = require('base-64')
 
+// Get environment variables from .env file
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+const subdomain = process.env.subdomain
+const username = process.env.username
+const password = process.env.password
+
 // Prepare to authenticate
-const tok = `${authstuff.username}:${authstuff.password}`;
+const tok = `${username}:${password}`;
 const hash = Base64.encode(tok);
 
 // Set config defaults when creating the instance
 const zendesk = axios.create({
-  baseURL: `https://${subdomain.subdomain}.zendesk.com/api/v2/`,
+  baseURL: `https://${subdomain}.zendesk.com/api/v2/`,
   headers: {
     Authorization: `Basic ${hash}`
   }
