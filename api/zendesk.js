@@ -3,8 +3,8 @@ const axios = require('axios')
 const Base64 = require('base-64')
 
 // Get environment variables from .env file
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') { // If not in production environment
+  require('dotenv').config(); // Load the .env file in the root of project and initialize the values. 
 }
 const subdomain = process.env.subdomain
 const username = process.env.username
