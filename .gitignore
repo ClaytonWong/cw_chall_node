@@ -1,7 +1,7 @@
 # Use .env file to store subdomain and authorisation info instead
 .env
 
-# 
+# Files for storing subdomain, username and password
 ./api/authStuff.js
 ./api/subdomain.js
 
