@@ -1,87 +1,95 @@
-const zendesk = require('./api/zendesk')
+const zendesk = require('./api/zendesk');
 
 function getFromZendeskAPI(restOfURL) {
   let promise = zendesk.getFromAPI(restOfURL)
     .then(res => {
-      return res
+      return res;
     })
     .catch((error) => {
-      console.log('error from .catch in getFromZendeskAPI definition: ', error)
+      console.log('error from .catch in getFromZendeskAPI definition: ', error);
     })
-  return promise
-}
+  return promise;
+};
 
 function pageThroughTickets(pageNum, ticketsPerPage) {
   
   // Make request for a page of tickets, starting from pageNum
   getFromZendeskAPI(`tickets.json?page=${pageNum}&per_page=${ticketsPerPage}`)
   .then(res => {
-    var page = res.data
-    console.log(page) // Show tickets on current page
+    var page = res.data;
+    console.log(page); // Show tickets on current page
 
     if(page["next_page"] === null) {
-      console.log('Next page is null.')
+      console.log('Next page is null.');
     }
     else {
-      console.log('There is a next page.')
-      pageThroughTickets(pageNum + 1, ticketsPerPage) // Make request for next page if it's available
+      console.log('There is a next page.');
+      pageThroughTickets(pageNum + 1, ticketsPerPage); // Make request for next page if it's available
     }
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error)
+    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error);
   })
-}
+};
 
 function listTickets(pageNum, ticketsPerPage) {
   
   // Make request for tickets on pageNum
   getFromZendeskAPI(`tickets.json?page=${pageNum}&per_page=${ticketsPerPage}`)
   .then(res => {
-    var tickets = res.data.tickets
+    var tickets = res.data.tickets;
     
-    console.log(`Tickets on page ${pageNum}`) 
-    console.log('-----------------')
+    console.log(`Tickets on page ${pageNum}`);
+    console.log('-----------------');
 
     // Show ID and subject for tickets on current page
     tickets.forEach(ticket => {
-      console.log(`ID: ${ticket.id}, Subject: ${ticket.subject}`)
+      console.log(`ID: ${ticket.id}, Subject: ${ticket.subject}`);
     })
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error)
+    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error);
   })
-}
+};
 
 function showDetailsForOneTicket(id) {
   getFromZendeskAPI(`tickets/${id}.json`) // Request json for ticket that matches id given
   .then(res => {
-    var ticket = res.data.ticket
+    var ticket = res.data.ticket;
 
-    console.log('Details for ticket:')
-    console.log('-------------------')
-    console.log(`ID: ${ticket.id}`)
-    console.log(`Created at: ${ticket.created_at}`)
-    console.log(`Updated at: ${ticket.updated_at}`)
-    console.log(`Subject: ${ticket.subject}`)
-    console.log('Description:')
-    console.log(ticket.description)
+    console.log('Details for ticket:');
+    console.log('-------------------');
+    console.log(`ID: ${ticket.id}`);
+    console.log(`Created at: ${ticket.created_at}`);
+    console.log(`Updated at: ${ticket.updated_at}`);
+    console.log(`Subject: ${ticket.subject}`);
+    console.log('Description:');
+    console.log(ticket.description);
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error)
+    console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error);
   })
-}
+};
 
 // Test values
-let pageNum = 1
-let ticketsPerPage = 25
+//let pageNum = 1;
+let ticketsPerPage = 25;
 
 // Test function showDetailsForOneTicket to print details for ticket with id of 1
-//showDetailsForOneTicket(1)
+//showDetailsForOneTicket(1);
 
 // Test function for paging through tickets, starting from page 1, with 25 tickets per page
 /*
-pageThroughTickets(pageNum, ticketsPerPage)
+pageThroughTickets(pageNum, ticketsPerPage);
 */
 
 // list some info on tickets on page 1
-listTickets(pageNum, ticketsPerPage)
+//listTickets(pageNum, ticketsPerPage);
+
+module.exports = {
+  getFromZendeskAPI: getFromZendeskAPI,
+  pageThroughTickets: pageThroughTickets,
+  listTickets: listTickets,
+  showDetailsForOneTicket: showDetailsForOneTicket,
+  ticketsPerPage: ticketsPerPage
+};

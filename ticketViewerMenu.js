@@ -1,28 +1,33 @@
 'use strict';
 var inquirer = require('inquirer');
+var request = require('./request.js');
+
+let pageNum;
 
 var mainPrompt = {
   type: 'list',
   name: 'main',
   message: 'What would you like to do?',
-  choices: ['Goto sub menu', 'Do action 2', 'Exit']
+  choices: ['Page through tickets', 'Goto sub menu', 'Exit']
 };
 
 function mainMenu() {
   inquirer.prompt(mainPrompt).then(answers => {
-    if (answers.main === 'Goto sub menu') {
+    if (answers.main === 'Page through tickets') {
+      // Page through tickets, starting from page 1, with 25 tickets per page
+      pageNum = 1;
+      request.pageThroughTickets(pageNum, request.ticketsPerPage);;
+      mainMenu();
+    }
+    else if (answers.main === 'Goto sub menu') {
       console.log('Going to sub menu.');
       subMenu();
     } 
-    else if (answers.main === 'Do action 2') {
-      console.log('Doing action 2.');
-      mainMenu();
-    }
     else { // Exit
       console.log('Good bye.');
     }
   });
-}
+};
 
 var subMenuPrompt = {
   type: 'input',
@@ -43,7 +48,7 @@ function subMenu()
     else{
       let myInt = parseInt(answers.sub);
       let result = myInt + 1;
-      console.log(`Final result is ${result}`)
+      console.log(`Final result is ${result}`);
       subMenu();
     }
   });
