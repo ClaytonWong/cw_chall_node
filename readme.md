@@ -86,6 +86,27 @@ In the .env file, type in the following:
 
 SUBDOMAIN, USERNAME and PASSWORD should be replaced with the subdomain, username and password that you want to use.
 
+## How to use the Zendesk ticket viewer
+At the commandline, in the directory where you extracted the zip file, type in the following:
+
+  node ticketViewerMenu.js
+
+This will put you in the main menu of the ticket viewer. Use the arrow keys to select one of the following:
+* 'Page through tickets', this will page through the JSON objects for all the tickets, where there are 25   
+  JSON objects per page.  
+* 'List tickets for a page', this will list tickets on pages available, it will take you to a prompt
+  that will ask you to either
+  * Type in a page number to list tickets for
+  * Type in 'back' to go back to the main menu
+  * Or type in 'exit' to exit the ticket viewer
+  It will then tell you how many pages are available. A valid page number is an integer from 1 to the number of pages available. Type in a valid page number, 'back' , or 'exit' then press enter to carry out desired action.
+* 'Show details for 1 ticket', this will take you to a prompt that will ask you to either
+  * Type in a ticket ID number to show details for
+  * Type in 'back' to go to main menu
+  * Or 'exit' to exit the ticket viewer
+  It will then tell you how many tickets are available followed by range of ticket IDs. A valid ID is one that is in the range. Type in a valid ticket ID number, 'back' , or 'exit' then press enter to carry out desired action.
+* 'exit', this will exit the ticket viewer.
+
 ## Design and implementation decisions, including changes
 ### Storing of credentials
 Originally, the subdomain was stored in a separate file called subdomain.js, and the username and password were stored in the file authStuff.js. Both of those files were in the .gitignore file so that they will not
