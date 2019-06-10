@@ -5,6 +5,8 @@ This Zendesk ticket viewer is for the coding challenge for the Software Engineer
 Internship in Melbourne Australia, which was advertised on 16 May 2019.
 
 The programming language used for my solution was Node.js (version 10.16.0).
+My reason for using is because it is the programming language that I'm most familiar
+with at this time.
 Node.js ver 10.16.0 can be downloaded from it's official site:
 
   https://nodejs.org/en/
@@ -152,6 +154,9 @@ const zendesk = axios.create({
   }
 })
 ```
+### Getting user input from keyboard and commandline and working with it
+At first, I tried creating menu systems in a separate file using 'readline' and 'process.stdin'. But they do not work well, for example, it would quit the program after you make a choice. Eventually, I found the package 'inquirer' which allowed me to create better commandline interfaces.
+
 ## Problems encounted and rough solutions
 A list of problems I encounted with rough solutions in diary format are contained in the file:
 
