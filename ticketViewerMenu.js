@@ -1,5 +1,5 @@
 'use strict';
-var inquirer = require('inquirer');
+var inquirer = require('inquirer'); // Use inquirer to make menus and get user input from commandline
 var request = require('./request.js');
 
 let pageNum;

@@ -23,6 +23,7 @@ Node.js ver 10.16.0 can be downloaded from it's official site:
 The project requires the following Node packages:
 
 #### Axios
+Axios makes it easier for you to work with APIs.
 To get Axios type in the following at the command line:
 
 If you use yarn, type:
@@ -38,6 +39,7 @@ The Github repo for Axios is at the link:
   https://github.com/axios/axios
 
 #### base-64
+'base-64' lets you encode base64 numbers for authentication.
 To get base-64 type in the following at the command line:
 
 If you use yarn, type:
@@ -49,6 +51,7 @@ If you use npm, type:
   npm install base-64
 
 #### dotenv
+'dotenv' lets you use .env files for environment variables.
 To get dotenv type in the following at the command line:
 
 If you use yarn, type:
@@ -58,6 +61,18 @@ If you use yarn, type:
 If you use npm, type:
 
   npm install dotenv
+
+#### inquirer
+'inquirer' makes it easier for you to get user input from the keyboard, create menus and work with them.
+To get inquirer type in the following at the command line:
+
+If you use yarn, type:
+
+  yarn add inquirer
+
+If you use npm, type:
+
+  npm install inquirer
 
 ### Creating a .env file
 You need to create a .env file in the root directory of the project for it to run.
