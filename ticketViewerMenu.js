@@ -8,7 +8,7 @@ var mainPrompt = {
   type: 'list',
   name: 'main',
   message: 'What would you like to do?',
-  choices: ['Page through tickets', 'List tickets for a page', 'Exit']
+  choices: ['Page through tickets', 'List tickets for a page', 'Show details for 1 ticket', 'Exit']
 };
 
 function mainMenu() {
@@ -22,6 +22,10 @@ function mainMenu() {
     else if (answers.main === 'List tickets for a page') {
       console.log('Going to list tickets part.');
       listTickets();
+    }
+    else if (answers.main === 'Show details for 1 ticket') {
+      console.log('Going to show details part.');
+      showDetailsForOneTicket();
     } 
     else { // Exit
       console.log('Good bye.');
@@ -64,7 +68,7 @@ function listTickets()
       let myInt = parseInt(answers.listTicketsInput);
       
       if( myInt == NaN) {
-        console.log('Pleaes enter a valid page number, or \'back\' to goto main menu, or \'exit\' to exit');
+        console.log('Please enter a valid page number, or \'back\' to goto main menu, or \'exit\' to exit');
       }
       else {
         if(myInt < 1 || myInt > pageCount) {
@@ -78,6 +82,53 @@ function listTickets()
       listTickets();
     }
   });
+}
+
+var showTicketDetailsPrompt = {
+  type: 'input',
+  name: 'showTicketDetailsInput',
+  message: 'Enter a ticket ID number to show details for, type in \'back\' to goto main menu, or \'exit\' to exit'
+};
+
+function showDetailsForOneTicket()
+{ 
+  let ticketCount;
+
+  request.getNumOfTickets() 
+  .then(res => {
+    ticketCount = res; // Find ticket count
+
+    console.log(`${ticketCount} tickets available. Ticket IDs range from 1 to ${ticketCount}.`);
+  })
+  .catch((error) => {
+    console.log(`error from .catch in getNumOfTickets: `, error);
+  })
   
+  inquirer.prompt(showTicketDetailsPrompt).then(answers => {
+    if(answers.showTicketDetailsInput === 'back') {
+      console.log('Going to main menu.');
+      mainMenu();
+    }
+    else if(answers.showTicketDetailsInput === 'exit') {
+      console.log('Good bye.');
+    }
+    else{
+      let myInt = parseInt(answers.showTicketDetailsInput);
+      
+      if( myInt == NaN) {
+        console.log('Please enter a valid ticket ID number, or \'back\' to goto main menu, or \'exit\' to exit');
+      }
+      else {
+        if(myInt < 1 || myInt > ticketCount) {
+          console.log('Invalid ticket requested.');
+        }
+        else {
+          request.showDetailsForOneTicket(myInt);
+        }
+      }
+      
+      showDetailsForOneTicket();
+    }
+  });
 }
 mainMenu();

@@ -40,6 +40,7 @@ function listTickets(pageNum, ticketsPerPage) {
     var tickets = res.data.tickets;
     
     console.log('');
+    console.log('');
     console.log(`Tickets on page ${pageNum}`);
     console.log('-----------------');
 
@@ -47,6 +48,7 @@ function listTickets(pageNum, ticketsPerPage) {
     tickets.forEach(ticket => {
       console.log(`ID: ${ticket.id}, Subject: ${ticket.subject}`);
     })
+    console.log('');
   })
   .catch((error) => {
     console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error);
@@ -58,6 +60,8 @@ function showDetailsForOneTicket(id) {
   .then(res => {
     var ticket = res.data.ticket;
 
+    console.log('');
+    console.log('');
     console.log('Details for ticket:');
     console.log('-------------------');
     console.log(`ID: ${ticket.id}`);
@@ -66,6 +70,7 @@ function showDetailsForOneTicket(id) {
     console.log(`Subject: ${ticket.subject}`);
     console.log('Description:');
     console.log(ticket.description);
+    console.log('');
   })
   .catch((error) => {
     console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error);
