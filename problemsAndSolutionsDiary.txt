@@ -39,3 +39,32 @@ Trouble importing credentials stored in separate files to access api.
 Rough solution:
 Use material from following Stackoverflow page to fix syntax errors:
 https://stackoverflow.com/questions/8595509/how-do-you-share-constants-in-nodejs-modules
+
+
+Fri to Sun 2019 Jun 7 to 9
+--------------------------
+Problem:
+Creating Commandline interface to receive user input from keyboard. Including commandline based menus.
+When experimenting with different solutions, some solutions would:
+* Get into infinite loops when using 'readline' and while loops to stay on the same menu
+* Only work on main level of the menu, submenus would not work in some solution that use 'process.stdin'
+* Quits out of the program after you make a choice in some solutions that use 'process.stdin'
+* Show messages more than once so the output is messy when using 'readline'. This also happens when
+  inquirer is used.
+Code that I wrote that causes the above mentioned problems such as quitting early were adapted from Code
+examples from the following sources:
+* Example: Tiny CLI from https://nodejs.org/dist/latest-v10.x/docs/api/readline.html#readline_event_sigcont
+* process.stdin from https://nodejs.org/dist/latest-v10.x/docs/api/process.html#process_process_stdin
+* Use Node JS Process Object’s Stdin from https://www.dev2qa.com/node-js-get-user-input-from-command-line-prompt-example/
+* https://stackoverflow.com/questions/8128578/reading-value-from-console-interactively
+* https://stackoverflow.com/questions/32458427/multiple-menus-with-node-js
+To see the solutions and code examples that I've tried, see the file playReadline.js
+
+Rough solution:
+Using inquirer eliminated the following problems:
+* Infinite loops
+* Submenu not working
+* Qutting program early
+Code examples from the following places were modified to suit the needs of this coding challenge:
+* https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/input.js
+* https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/hierarchical.js
