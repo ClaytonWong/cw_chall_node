@@ -39,6 +39,7 @@ function listTickets(pageNum, ticketsPerPage) {
   .then(res => {
     var tickets = res.data.tickets;
     
+    console.log('');
     console.log(`Tickets on page ${pageNum}`);
     console.log('-----------------');
 
@@ -71,6 +72,22 @@ function showDetailsForOneTicket(id) {
   })
 };
 
+function getNumOfTickets() {
+  
+  // Make request for a tickets.json
+  let promise = zendesk.getFromAPI(`tickets.json`)
+  .then(res => {
+    var count = res.data["count"]; // Find ticket count then return it
+    
+    return count;
+  })
+  .catch((error) => {
+    console.log(`error from .catch in getNumOfTickets: `, error);
+  })
+
+  return promise;
+};
+
 // Test values
 //let pageNum = 1;
 let ticketsPerPage = 25;
@@ -79,17 +96,19 @@ let ticketsPerPage = 25;
 //showDetailsForOneTicket(1);
 
 // Test function for paging through tickets, starting from page 1, with 25 tickets per page
-/*
-pageThroughTickets(pageNum, ticketsPerPage);
-*/
+//pageThroughTickets(pageNum, ticketsPerPage);
 
 // list some info on tickets on page 1
 //listTickets(pageNum, ticketsPerPage);
+
+// Test function for getting ticket count
+//console.log( getNumOfTickets().then() );
 
 module.exports = {
   getFromZendeskAPI: getFromZendeskAPI,
   pageThroughTickets: pageThroughTickets,
   listTickets: listTickets,
   showDetailsForOneTicket: showDetailsForOneTicket,
+  getNumOfTickets: getNumOfTickets,
   ticketsPerPage: ticketsPerPage
 };
