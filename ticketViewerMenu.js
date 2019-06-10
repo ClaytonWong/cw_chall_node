@@ -7,7 +7,7 @@ let pageNum;
 var mainPrompt = {
   type: 'list',
   name: 'main',
-  message: 'What would you like to do?',
+  message: 'What would you like to do? (Choose something then press enter.)',
   choices: ['Page through tickets', 'List tickets for a page', 'Show details for 1 ticket', 'Exit']
 };
 
@@ -36,7 +36,7 @@ function mainMenu() {
 var listTicketsPrompt = {
   type: 'input',
   name: 'listTicketsInput',
-  message: 'Enter a page number to list tickets for, type in \'back\' to goto main menu, or \'exit\' to exit'
+  message: 'Type in a page number to list tickets for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.'
 };
 
 function listTickets()
@@ -87,7 +87,7 @@ function listTickets()
 var showTicketDetailsPrompt = {
   type: 'input',
   name: 'showTicketDetailsInput',
-  message: 'Enter a ticket ID number to show details for, type in \'back\' to goto main menu, or \'exit\' to exit'
+  message: 'Type in a ticket ID number to show details for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.'
 };
 
 function showDetailsForOneTicket()
