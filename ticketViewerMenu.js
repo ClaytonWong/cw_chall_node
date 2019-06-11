@@ -115,20 +115,22 @@ function showDetailsForOneTicket()
       console.log('Good bye.');
     }
     else{
-      let myInt = parseInt(answers.showTicketDetailsInput);
-      
-      if( myInt == NaN) {
-        console.log('Please enter a valid ticket ID number, or \'back\' to goto main menu, or \'exit\' to exit');
-      }
-      else {
+      // Check if you have been given a number
+      if (/^[0-9]+$/.test(answers.showTicketDetailsInput)) {
+        // If yes, convert it into an integer
+        let myInt = parseInt(answers.showTicketDetailsInput, 10);
+
         if(myInt < 1 || myInt > ticketCount) {
           console.log('Invalid ticket requested.');
         }
         else {
           request.showDetailsForOneTicket(myInt);
         }
+      }    
+      else {
+        console.log('Please enter a valid ticket ID number, or \'back\' to goto main menu, or \'exit\' to exit');
       }
-      
+       
       showDetailsForOneTicket();
     }
   });
