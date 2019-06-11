@@ -68,3 +68,23 @@ Using inquirer eliminated the following problems:
 Code examples from the following places were modified to suit the needs of this coding challenge:
 * https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/input.js
 * https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/hierarchical.js
+
+Tue 2019 Jun 11
+---------------
+Problem:
+If trying to list tickets for a page or get details for a ticket, and you enter a non number input
+other than 'back' or 'exit', it will show a large JSON with error instead of the message:
+'Please enter a valid ticket ID number, or 'back' to goto main menu, or 'exit' to exit' or
+'Please enter a valid page number, or 'back' to goto main menu, or 'exit' to exit'
+
+Rough solution:
+Use regular expression to test for numbers if 'back' or 'exit' was not given. If the regex 
+(regular expression) fails, show one of the 2 desired error messages from above. If the regex
+passes, convert it into an integer then check if it's a valid page or ticket ID number.
+The following code:
+
+if (/^[0-9]+$/.test(value)) {
+        value = parseInt(value, 10);
+    }
+
+from https://code.tutsplus.com/tutorials/testing-in-nodejs--net-35018 was modified for my needs.
