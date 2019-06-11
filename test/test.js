@@ -1,30 +1,14 @@
-//var request = require("supertest");
-//var should = require("should");
-var expect = require('chai').expect;
+var chai = require('chai');
+var expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
 const zendesk = require("../api/zendesk");
 const app = zendesk.getFromAPI;
 
-/*
-describe('GET', function() {
-  it('responds', function() {
-    return request(app)
-      .get('tickets.json?page=1&per_page=25')
-      .set('Accept', 'application/json')
-      //.expect('Content-Type', /json/)
-      //.expect(200)
-      .then(response => {
-          assert(response.data.count, 101)
-      })
-  });
-});
-*/
+// Check if there are 101 tickets in account as of Tue 2019 Jun 11
+it('should do something with promises', function() {
+  var value = app('tickets.json')
 
-describe('GET tickets.json', function () {
-  it('respond with json ', function (done) {
-      request(app)
-          .get('tickets/1.json')
-          //.set('Accept', 'application/json')
-          //.expect('Content-Type', /json/)
-          .expect(404, done);
-  });
+  return expect(value.then(o => o.data.count)).to.eventually.equal(101);
 });
