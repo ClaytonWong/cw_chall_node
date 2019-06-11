@@ -12,3 +12,9 @@ it('should do something with promises', function() {
 
   return expect(value.then(o => o.data.count)).to.eventually.equal(101);
 });
+
+it('should do something with promises test 2', function() {
+  var value = app('tickets.json')
+
+  return expect(value.then(o => o.data.count)).to.eventually.not.equal(102);
+});
