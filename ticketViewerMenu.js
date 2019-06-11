@@ -65,12 +65,11 @@ function listTickets()
       console.log('Good bye.');
     }
     else{
-      let myInt = parseInt(answers.listTicketsInput);
-      
-      if( myInt == NaN) {
-        console.log('Please enter a valid page number, or \'back\' to goto main menu, or \'exit\' to exit');
-      }
-      else {
+      // Check if you have been given a number
+      if (/^[0-9]+$/.test(answers.listTicketsInput)) {
+        // If yes, convert it into an integer
+        let myInt = parseInt(answers.listTicketsInput, 10);
+
         if(myInt < 1 || myInt > pageCount) {
           console.log('Invalid page requested.');
         }
@@ -78,7 +77,10 @@ function listTickets()
           request.listTickets(myInt, request.ticketsPerPage);
         }
       }
-      
+      else {
+        console.log('Please enter a valid page number, or \'back\' to goto main menu, or \'exit\' to exit');
+      }
+            
       listTickets();
     }
   });
