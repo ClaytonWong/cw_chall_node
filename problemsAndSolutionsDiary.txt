@@ -119,3 +119,10 @@ I tried using Chai, chai-as-promised and Mocha instead using the following guide
 * https://www.sitepoint.com/promises-in-javascript-unit-tests-the-definitive-guide/
 
 By modifying examples from the above guide, I was able to eliminate syntax errors and warnings.
+
+
+Wed 2019 Jun 11
+---------------
+Fixed repeated prompt messages problem. This was solved by moving functions for finding and showing 
+pageCount and ticketCount to message sections of listTicketsPrompt and showTicketDetailsPrompt objects,
+messages that were causing problems were moved into the functions so they will not be repeated.
