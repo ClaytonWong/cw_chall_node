@@ -3,6 +3,8 @@ var inquirer = require('inquirer'); // Use inquirer to make menus and get user i
 var request = require('./request.js');
 
 let pageNum;
+let pageCount;
+let ticketCount;
 
 var mainPrompt = {
   type: 'list',
@@ -36,27 +38,28 @@ function mainMenu() {
 var listTicketsPrompt = {
   type: 'input',
   name: 'listTicketsInput',
-  message: 'Type in a page number to list tickets for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.'
+  message: 
+  function() {
+    request.getNumOfTickets() 
+    .then(res => {
+      ticketCount = res; // Find ticket count
+
+      /* Page count is number of tickets divided by tickets per page rounded up to the nearest integer */
+      pageCount = Math.ceil( ticketCount / request.ticketsPerPage );
+      
+      console.log(`${pageCount} pages of tickets available.`);
+      console.log('Type in a page number to list tickets for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.');
+    })
+    .catch((error) => {
+      console.log(`error from .catch in getNumOfTickets: `, error);
+    })
+  }
 };
 
 function listTickets()
 { 
-  let pageCount;
-
-  request.getNumOfTickets() 
-  .then(res => {
-    let ticketCount = res; // Find ticket count
-
-    /* Page count is number of tickets divided by tickets per page rounded up to the nearest integer */
-    pageCount = Math.ceil( ticketCount / request.ticketsPerPage );
-    
-    console.log(`${pageCount} pages of tickets available.`);
-  })
-  .catch((error) => {
-    console.log(`error from .catch in getNumOfTickets: `, error);
-  })
-  
   inquirer.prompt(listTicketsPrompt).then(answers => {
+
     if(answers.listTicketsInput === 'back') {
       console.log('Going to main menu.');
       mainMenu();
