@@ -1,5 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
+var assert = chai.assert;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
@@ -68,4 +69,27 @@ it('Should not get ticket with id of 26 if you ask for ticket with id of 1', fun
   var value = getFromZendeskAPI(`tickets/${id}.json`);
 
   return expect(value.then(o => o.data.ticket.id)).to.eventually.not.equal(26);
+});
+
+
+// Test Regex used in ticket viewer menu
+it('Regex should allow integers', function() {
+  var testInput = 1;
+  var value = /^[0-9]+$/.test(testInput);
+
+  assert.equal(value, true);
+});
+
+it('Regex should disallow floating point numbers', function() {
+  var testInput = 1.5;
+  var value = /^[0-9]+$/.test(testInput);
+
+  assert.equal(value, false);
+});
+
+it('Regex should disallow letters', function() {
+  var testInput = 'a';
+  var value = /^[0-9]+$/.test(testInput);
+
+  assert.equal(value, false);
 });
