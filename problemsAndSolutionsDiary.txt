@@ -88,3 +88,34 @@ if (/^[0-9]+$/.test(value)) {
     }
 
 from https://code.tutsplus.com/tutorials/testing-in-nodejs--net-35018 was modified for my needs.
+
+
+Problem:
+Testing using Mocha, Supertest and Should. I did not know how to test JavaScript code before this coding
+challenge, so I had to learn the bare minimum needed in 1 day. I tried applying what I learnt from the 
+following sites but kept getting syntax errors and warnings same as and similar to the following:
+
+'
+(node:18385) UnhandledPromiseRejectionWarning: AssertionError: expected undefined to equal 101
+    at /media/n/Data/ToArchive,Backup&Replace/ZendeskInternSoftwareEngineering2019_05_16/CodingTest/
+    cw_chall_node/test/test.js:20:27
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:18385) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error 
+originated either by throwing inside of an async function without a catch block, or by rejecting a 
+promise which was not handled with .catch(). (rejection id: 1)
+(node:18385) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, 
+promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+'
+
+Supertest related sites:
+* https://www.npmjs.com/package/supertest
+* https://hackernoon.com/api-testing-using-supertest-1f830ce838f1
+* https://codeforgeek.com/unit-testing-nodejs-application-using-mocha/
+* https://strongloop.com/strongblog/how-to-test-an-api-with-node-js/
+
+Rough solution:
+I tried using Chai, chai-as-promised and Mocha instead using the following guide:
+
+* https://www.sitepoint.com/promises-in-javascript-unit-tests-the-definitive-guide/
+
+By modifying examples from the above guide, I was able to eliminate syntax errors and warnings.
