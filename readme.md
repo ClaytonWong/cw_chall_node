@@ -118,10 +118,11 @@ If you use npm, type:
 You need to create a .env file in the root directory of the project for it to run.
 In the .env file, type in the following:
 
+```javascript
   subdomain = SUBDOMAIN
   username = USERNAME
   password = PASSWORD
-
+```
 SUBDOMAIN, USERNAME and PASSWORD should be replaced with the subdomain, username and password that you want to use.
 
 ## How to use the Zendesk ticket viewer
