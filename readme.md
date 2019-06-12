@@ -145,6 +145,13 @@ This will put you in the main menu of the ticket viewer. Use the arrow keys to s
   It will then tell you how many tickets are available followed by range of ticket IDs. A valid ID is one that is in the range. Type in a valid ticket ID number, 'back' , or 'exit' then press enter to carry out desired action.
 * 'exit', this will exit the ticket viewer.
 
+## How to test ticket viewer using Mocha, Chai & chai-as-promised
+At the commandline, in the directory where you extracted the zip file, type in the following:
+
+  yarn test
+
+This will run the test script in the package.json file. That test script will run the file test.js in the test subdirectory.
+
 ## Design and implementation decisions, including changes
 ### Storing of credentials
 Originally, the subdomain was stored in a separate file called subdomain.js, and the username and password were stored in the file authStuff.js. Both of those files were in the .gitignore file so that they will not
