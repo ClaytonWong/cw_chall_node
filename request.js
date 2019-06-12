@@ -6,7 +6,8 @@ function getFromZendeskAPI(restOfURL) {
       return res;
     })
     .catch((error) => {
-      console.log('error from .catch in getFromZendeskAPI definition: ', error);
+      console.log('error from .catch in getFromZendeskAPI definition: ');
+      explainError(error);
     })
   return promise;
 };
@@ -73,7 +74,7 @@ function showDetailsForOneTicket(id) {
     console.log('');
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for ticket with id${id}: `, error);
+    console.log(`error from .catch in getFromZendeskAPI for ticket with id of ${id}: `, error);
   })
 };
 
@@ -87,11 +88,47 @@ function getNumOfTickets() {
     return count;
   })
   .catch((error) => {
-    console.log(`error from .catch in getNumOfTickets: `, error);
+    console.log(`error from .catch in getNumOfTickets: `);
+    explainError(error);
   })
 
   return promise;
 };
+
+function explainError(error) {
+  console.log(`status: ${error.response.status}`);
+  console.log(`statusText: ${error.response.statusText}`);
+  console.log(`Data: ${error.response.data.error}`);
+
+  let statusCode = error.response.status;
+
+  switch(statusCode) {
+    case 400:
+      console.log('Bad request, often due to missing a required parameter.');
+      break;
+    case 401:
+      console.log('No valid API key provided. Or');
+      console.log('subdomain, username and/or password incorrect');
+      break;
+    case 403:
+      console.log('The server understood the request, but is refusing to fulfill it.');
+      break;
+    case 404:
+      console.log('The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. ');
+      break;
+    case 500:
+      console.log('The server encountered an unexpected condition which prevented it from fulfilling the request.');
+      break;
+    case 501:
+      console.log('The server does not support the functionality required to fulfill the request.');
+      break;
+    case 502:
+      console.log('The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.');
+      break;
+  }
+
+  console.log('');
+}
 
 // Test values
 //let pageNum = 1;
