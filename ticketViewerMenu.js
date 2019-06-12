@@ -51,7 +51,8 @@ var listTicketsPrompt = {
         console.log('Type in a page number to list tickets for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.');
       })
       .catch((error) => {
-        console.log(`error from .catch in getNumOfTickets: `, error);
+        console.log(`error from .catch in getNumOfTickets: `);
+        request.explainError(error);
       })
     }
 };
@@ -104,7 +105,8 @@ var showTicketDetailsPrompt = {
         console.log('Type in a ticket ID number to show details for, or \'back\' to goto main menu, or \'exit\' to exit, then press enter.');
       })
       .catch((error) => {
-        console.log(`error from .catch in getNumOfTickets: `, error);
+        console.log(`error from .catch in getNumOfTickets: `);
+        request.explainError(error);
       })
     }
 };

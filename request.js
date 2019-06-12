@@ -29,7 +29,8 @@ function pageThroughTickets(pageNum, ticketsPerPage) {
     }
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error);
+    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `);
+    explainError(error);
   })
 };
 
@@ -52,7 +53,8 @@ function listTickets(pageNum, ticketsPerPage) {
     console.log('');
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `, error);
+    console.log(`error from .catch in getFromZendeskAPI for page${pageNum}: `);
+    explainError(error);
   })
 };
 
@@ -74,7 +76,8 @@ function showDetailsForOneTicket(id) {
     console.log('');
   })
   .catch((error) => {
-    console.log(`error from .catch in getFromZendeskAPI for ticket with id of ${id}: `, error);
+    console.log(`error from .catch in getFromZendeskAPI for ticket with id of ${id}: `);
+    explainError(error);
   })
 };
 
@@ -152,5 +155,6 @@ module.exports = {
   listTickets: listTickets,
   showDetailsForOneTicket: showDetailsForOneTicket,
   getNumOfTickets: getNumOfTickets,
+  explainError:explainError,
   ticketsPerPage: ticketsPerPage
 };
