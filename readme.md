@@ -133,16 +133,17 @@ This will put you in the main menu of the ticket viewer. Use the arrow keys to s
 * 'Page through tickets', this will page through the JSON objects for all the tickets, where there are 25   
   JSON objects per page.  
 * 'List tickets for a page', this will list tickets on pages available, it will take you to a prompt
-  that will ask you to either
+  that will tell you how many pages are availablew then ask you to either
   * Type in a page number to list tickets for
   * Type in 'back' to go back to the main menu
   * Or type in 'exit' to exit the ticket viewer
-  It will then tell you how many pages are available. A valid page number is an integer from 1 to the number of pages available. Type in a valid page number, 'back' , or 'exit' then press enter to carry out desired action.
-* 'Show details for 1 ticket', this will take you to a prompt that will ask you to either
+  A valid page number is an integer from 1 to the number of pages available. Type in a valid page number, 'back', or 'exit' then press enter to carry out desired action.
+* 'Show details for 1 ticket', this will take you to a prompt that will then tell you how many tickets are  
+   available followed by range of ticket IDs, then ask you to either
   * Type in a ticket ID number to show details for
   * Type in 'back' to go to main menu
   * Or 'exit' to exit the ticket viewer
-  It will then tell you how many tickets are available followed by range of ticket IDs. A valid ID is one that is in the range. Type in a valid ticket ID number, 'back' , or 'exit' then press enter to carry out desired action.
+  A valid ID is one that is in the range. Type in a valid ticket ID number, 'back', or 'exit' then press enter to carry out desired action.
 * 'exit', this will exit the ticket viewer.
 
 ## How to test ticket viewer using Mocha, Chai & chai-as-promised
