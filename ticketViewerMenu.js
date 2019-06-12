@@ -59,6 +59,8 @@ var listTicketsPrompt = {
 function listTickets()
 { 
   inquirer.prompt(listTicketsPrompt).then(answers => {
+    
+    answers.listTicketsInput = answers.listTicketsInput.trim().toLowerCase();
 
     if(answers.listTicketsInput === 'back') {
       console.log('Going to main menu.');
@@ -111,6 +113,8 @@ function showDetailsForOneTicket()
 { 
   inquirer.prompt(showTicketDetailsPrompt).then(answers => {
     
+    answers.showTicketDetailsInput = answers.showTicketDetailsInput.trim().toLowerCase();
+
     if(answers.showTicketDetailsInput === 'back') {
       console.log('Going to main menu.');
       mainMenu();
