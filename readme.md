@@ -153,6 +153,17 @@ At the commandline, in the directory where you extracted the zip file, type in t
 This will run the test script in the package.json file. That test script will run the file test.js in the test subdirectory.
 
 ## Design and implementation decisions, including changes
+### Brief description of overall design and/or how the ticket viewer works
+The ticket viewer basically works by calling the Zendesk API to ask for various information, such as details for a ticket.
+
+To enable calls to the Zendesk API, an instance is created. This is done using the subdomain to create a baseURL and a base64 encoded string formed by the username and password for the subdomain.
+
+To get various information from the Zendesk API, the rest of the URL needs to be given when doing the API call.
+
+What you or the user wants from the API will determine what the rest of the URL will be. For example, if you want the details of the ticket with the ID of 1, the rest of the URL will be 'tickets/1.json'
+
+The user input given at the menu and commandline prompts will be used to form the string that makes up the rest of the URL for the API call.
+
 ### Storing of credentials
 Originally, the subdomain was stored in a separate file called subdomain.js, and the username and password were stored in the file authStuff.js. Both of those files were in the .gitignore file so that they will not
 be put into Github.
