@@ -235,6 +235,11 @@ const zendesk = axios.create({
 ### Getting user input from keyboard and commandline and working with it
 At first, I tried creating menu systems in a separate file using 'readline' and 'process.stdin'. But they do not work well, for example, it would quit the program after you make a choice. Eventually, I found the package 'inquirer' which allowed me to create better commandline interfaces.
 
+### Handling errors from .catch
+Instead of showing a large amount of error messages that most people can't understand, I decided to pick
+out certain parts of the error object and showing that, then show other brief error messages depending
+on the status code returned.
+
 ## Problems encounted and rough solutions
 A list of problems I encounted with rough solutions in diary format are contained in the file:
 
