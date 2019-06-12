@@ -81,6 +81,39 @@ If you use npm, type:
 
   npm install inquirer
 
+#### Mocha
+Mocha is a JavaScript test framework. To get it from the commandline, type in the following:
+
+If you use yarn, type:
+
+  yarn add mocha
+
+If you use npm, type:
+
+  npm install mocha
+
+#### Chai
+Chai is a Behavioral Driven Developoment / Test Driven Development assertion library for node and the browser. To get it from the commandline, type in the following:
+
+If you use yarn, type:
+
+  yarn add chai
+
+If you use npm, type:
+
+  npm install chai
+
+#### chai-as-promised
+Chai as Promised extends Chai with a fluent language for asserting facts about promises. To get it from the commandline, type in the following:
+
+If you use yarn, type:
+
+  yarn add chai-as-promised
+
+If you use npm, type:
+
+  npm install chai-as-promised
+
 ### Creating a .env file
 You need to create a .env file in the root directory of the project for it to run.
 In the .env file, type in the following:
