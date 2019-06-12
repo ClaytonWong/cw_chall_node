@@ -13,6 +13,11 @@ Node.js ver 10.16.0 can be downloaded from it's official site:
 
 ## Requirements
 
+### Installing yarn
+Yarn is the package manager I used for Node. It can be downloaded at their official site:
+
+  https://yarnpkg.com/en/
+
 ### Installing the project
 1) In github, click on the green "clone or download" button
 2) Choose "download zip" in the dropdown menu under the button
